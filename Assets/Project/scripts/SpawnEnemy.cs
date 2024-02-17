@@ -16,7 +16,7 @@ public class SpawnEnemy : MonoBehaviour
         
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        int numEnemies = GameObject.FindGameObjectsWithTag("enemy").Length;
+        int numEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
 
 
