@@ -10,9 +10,11 @@ public class SimpleShoot : MonoBehaviour
     public GameObject casingPrefab;
     public GameObject muzzleFlashPrefab;
 
-    [Header("Location Refrences")]
+    [Header("Location References")]
     [SerializeField] private Animator gunAnimator;
-    [SerializeField] private Transform barrelLocation;
+
+    // [SerializeField] private Transform barrelLocation;
+    public Transform barrelLocation;
     [SerializeField] private Transform casingExitLocation;
 
     [Header("Settings")]
@@ -30,14 +32,36 @@ public class SimpleShoot : MonoBehaviour
             gunAnimator = GetComponentInChildren<Animator>();
     }
 
+    void Update(){
+        Debug.DrawRay(barrelLocation.position, barrelLocation.forward*100, Color.red,10);
+    }
+
     public void PullTheTrigger()
     {
         gunAnimator.SetTrigger("Fire");
+        Debug.DrawRay(transform.position, transform.forward*100, Color.red,10);
     }
 
     //This function creates the bullet behavior
     void Shoot()
     {
+        // shoot raycast
+        Ray ray = new Ray(barrelLocation.position, barrelLocation.forward);
+        Debug.DrawRay(transform.position, transform.forward*100, Color.red,10);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+          IDamageable damageable = hit.collider.GetComponent<IDamageable>();
+          Debug.Log(hit.collider.name);
+
+            // Check if the component implements the IDamageable interface
+            if (damageable != null)
+            {
+                // Call the TakeDamage method on the component
+                damageable.TakeDamage(10);
+            }
+        Debug.DrawLine(ray.origin, hit.point, Color.green); //debug collision
+        }
         if (muzzleFlashPrefab)
         {
             //Create the muzzle flash
