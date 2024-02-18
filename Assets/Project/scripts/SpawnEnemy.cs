@@ -8,31 +8,35 @@ public class SpawnEnemy : MonoBehaviour
 
     public float spawnRadius;
 
+    public bool spawning = true;
+
     void Start(){
-        SpawnEnemies();
+        StartCoroutine(SpawnEnemies());
     }
     IEnumerator SpawnEnemies()
     {
-        
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        while (spawning){
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        int numEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            int numEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            Debug.Log(1);
 
 
+            // Check if the player is within the spawn radius
+            if (numEnemies < 10)
+            {
+                // Generate a random position within the spawn radius
+                
+                Vector3 randomPosition = player.transform.position+ (Random.insideUnitSphere * spawnRadius);
 
-        // Check if the player is within the spawn radius
-        if (Vector3.Distance(transform.position, player.transform.position) <= spawnRadius && numEnemies < 10)
-        {
-            // Generate a random position within the spawn radius
-            Vector3 randomPosition = Random.insideUnitSphere * spawnRadius;
+                // Set the y-coordinate of the random position to 0 to ensure the enemy is spawned on the ground
+                randomPosition.y = 0;
 
-            // Set the y-coordinate of the random position to 0 to ensure the enemy is spawned on the ground
-            randomPosition.y = 0;
-
-            // Spawn a new enemy at the random position
-            Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+                // Spawn a new enemy at the random position
+                Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(3f);
         }
-        yield return new WaitForSeconds(3f);
     }
 
 }

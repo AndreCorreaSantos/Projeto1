@@ -39,7 +39,6 @@ public class SimpleShoot : MonoBehaviour
     public void PullTheTrigger()
     {
         gunAnimator.SetTrigger("Fire");
-        Debug.DrawRay(transform.position, transform.forward*100, Color.red,10);
     }
 
     //This function creates the bullet behavior
@@ -47,12 +46,10 @@ public class SimpleShoot : MonoBehaviour
     {
         // shoot raycast
         Ray ray = new Ray(barrelLocation.position, barrelLocation.forward);
-        Debug.DrawRay(transform.position, transform.forward*100, Color.red,10);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100))
         {
           IDamageable damageable = hit.collider.GetComponent<IDamageable>();
-          Debug.Log(hit.collider.name);
 
             // Check if the component implements the IDamageable interface
             if (damageable != null)
