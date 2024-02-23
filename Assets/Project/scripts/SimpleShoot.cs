@@ -10,6 +10,10 @@ public class SimpleShoot : MonoBehaviour
     public GameObject casingPrefab;
     public GameObject muzzleFlashPrefab;
 
+    public AudioSource source;
+
+    public AudioClip shootSound;
+
     [Header("Location References")]
     [SerializeField] private Animator gunAnimator;
 
@@ -19,7 +23,7 @@ public class SimpleShoot : MonoBehaviour
 
     [Header("Settings")]
     [Tooltip("Specify time to destory the casing object")] [SerializeField] private float destroyTimer = 2f;
-    [Tooltip("Bullet Speed")] [SerializeField] private float shotPower = 500f;
+    [Tooltip("Bullet Speed")] [SerializeField] private float  shotPower = 1000f;
     [Tooltip("Casing Ejection Speed")] [SerializeField] private float ejectPower = 150f;
 
 
@@ -43,7 +47,8 @@ public class SimpleShoot : MonoBehaviour
 
     //This function creates the bullet behavior
     void Shoot()
-    {
+    {  
+        source.PlayOneShot(shootSound,0.5f);
         // shoot raycast
         Ray ray = new Ray(barrelLocation.position, barrelLocation.forward);
         RaycastHit hit;

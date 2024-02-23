@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour, IDamageable
 {
     // Start is called before the first frame update
-
+    public AudioSource source;
+    public AudioClip hitsound;
     private NavMeshAgent agent;
     public float health = 50f;
 
@@ -15,10 +16,13 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float amount)
     {
+        source.PlayOneShot(hitsound);
+        float delay = hitsound.length;
+
         health -= amount;
         if (health <= 0f)
         {
-            Die();
+            Destroy(gameObject, delay);
         }
     }
 
@@ -27,9 +31,5 @@ public class Enemy : MonoBehaviour, IDamageable
         agent.SetDestination(player.transform.position);
     }
 
-    void Die()
-    {
-        Destroy(gameObject);
-    }
 
 }

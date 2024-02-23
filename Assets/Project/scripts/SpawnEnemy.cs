@@ -8,11 +8,26 @@ public class SpawnEnemy : MonoBehaviour
 
     public float spawnRadius;
 
-    public bool spawning = true;
+    private bool spawning = false;
+
+    // audio 
+    public AudioSource source;
+    public AudioClip hitsound;
+
 
     void Start(){
-        StartCoroutine(SpawnEnemies());
+        
     }
+
+    // on collision
+    void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.name == "bullet_head(Clone)"){
+                source.PlayOneShot(hitsound);
+                spawning = true; // spawn enemies
+                StartCoroutine(SpawnEnemies());
+            }
+        }
     IEnumerator SpawnEnemies()
     {
         while (spawning){
