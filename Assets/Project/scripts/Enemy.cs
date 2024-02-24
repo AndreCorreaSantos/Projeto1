@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
@@ -9,6 +10,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public AudioSource source;
     public AudioClip hitsound;
     private NavMeshAgent agent;
+
     public float health = 50f;
 
     void Start(){

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 [AddComponentMenu("Nokobot/Modern Guns/Simple Shoot")]
 public class SimpleShoot : MonoBehaviour
@@ -13,6 +14,9 @@ public class SimpleShoot : MonoBehaviour
     public AudioSource source;
 
     public AudioClip shootSound;
+
+    public VisualEffect hitEffect;
+
 
     [Header("Location References")]
     [SerializeField] private Animator gunAnimator;
@@ -59,8 +63,13 @@ public class SimpleShoot : MonoBehaviour
             // Check if the component implements the IDamageable interface
             if (damageable != null)
             {
+                // instantiate the hit effect
+                VisualEffect tempHit;
+                tempHit = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 // Call the TakeDamage method on the component
                 damageable.TakeDamage(10);
+                // Destroy the hit effect after 2 seconds
+                Destroy(tempHit, 2f);
             }
         Debug.DrawLine(ray.origin, hit.point, Color.green); //debug collision
         }
