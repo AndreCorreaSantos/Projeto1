@@ -59,6 +59,11 @@ public class SimpleShoot : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100))
         {
           IDamageable damageable = hit.collider.GetComponent<IDamageable>();
+          // get if parent has IDamageable
+            if (damageable == null)
+            {
+                damageable = hit.collider.GetComponentInParent<IDamageable>();
+            }
 
             // Check if the component implements the IDamageable interface
             if (damageable != null)
@@ -69,7 +74,7 @@ public class SimpleShoot : MonoBehaviour
                 // Call the TakeDamage method on the component
                 damageable.TakeDamage(10);
                 // Destroy the hit effect after 2 seconds
-                Destroy(tempHit, 2f);
+                Destroy(tempHit, 1f);
             }
         Debug.DrawLine(ray.origin, hit.point, Color.green); //debug collision
         }
