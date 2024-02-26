@@ -2661,6 +2661,7 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 1782395880954752, guid: 3dd9cf2e209c504448f1c4c6835675cf, type: 3}
   source: {fileID: 1883485572}
   shootSound: {fileID: 8300000, guid: cd581b17ee2311642bcf6704f8d6c59c, type: 3}
+  hitEffect: {fileID: 1312859516}
   gunAnimator: {fileID: 1883485565}
   barrelLocation: {fileID: 1027177769}
   casingExitLocation: {fileID: 317013404}
