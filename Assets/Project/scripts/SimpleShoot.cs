@@ -41,7 +41,10 @@ public class SimpleShoot : MonoBehaviour
     }
 
     void Update(){
-        Debug.DrawRay(barrelLocation.position, barrelLocation.forward*100, Color.red,10);
+        Debug.DrawRay(barrelLocation.position, barrelLocation.forward*100, Color.red,0.5f);
+        /// stop ray
+        /// 
+
     }
 
     public void PullTheTrigger()
@@ -76,7 +79,7 @@ public class SimpleShoot : MonoBehaviour
                 // Destroy the hit effect after 2 seconds
                 Destroy(tempHit, 1f);
             }
-        Debug.DrawLine(ray.origin, hit.point, Color.green); //debug collision
+        // Debug.DrawLine(ray.origin, hit.point, Color.green); //debug collision
         }
         if (muzzleFlashPrefab)
         {
