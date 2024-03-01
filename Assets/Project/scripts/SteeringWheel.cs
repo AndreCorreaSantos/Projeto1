@@ -46,7 +46,7 @@ public class SteeringWheel : XRBaseInteractable
             
         // Store angle for next process
         currentAngle = totalAngle;
-        rotateTransform.Rotate(transform.forward, angleDifference, Space.World);
+        rotateTransform.Rotate(transform.up, angleDifference, Space.World);
         //  rotateTransform.Rotate(Vector3.up, angleDifference, Space.Self);
         // OnWheelRotated?.Invoke(angleDifference);
     }
