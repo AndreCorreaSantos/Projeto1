@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class targetLogic : MonoBehaviour
 {
+
+    public Transform spawnTransform;
+    public GameObject prefab;
  private void OnTriggerEnter(Collider other)
     {
 
-            Debug.Log("The target collider has been hit by another object.");
+           // spawn prefab at spawn transform
+            Instantiate(prefab, spawnTransform.position, spawnTransform.rotation);
     }
 
 }
