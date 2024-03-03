@@ -9,6 +9,9 @@ public class PhysicsButton : MonoBehaviour
     [SerializeField] private float threshold = .1f;
     [SerializeField] private float deadzone = 0.025f;
 
+    public AudioSource source;
+
+    public AudioClip clickSound;
 
     private bool _isPressed;
     private Vector3 _startPos;
@@ -45,6 +48,7 @@ public class PhysicsButton : MonoBehaviour
     {
         _isPressed = true;
         onPressed.Invoke();
+        source.PlayOneShot(clickSound,0.5f);
         Debug.Log("Pressed");
     }
     
@@ -52,6 +56,7 @@ public class PhysicsButton : MonoBehaviour
     {
         _isPressed = false;
         onReleased.Invoke();
+        // source.PlayOneShot(clickSound,0.5f);
         Debug.Log("Released");
     }
 }
