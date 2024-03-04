@@ -1489,6 +1489,21 @@ MonoBehaviour:
   source: {fileID: 527384674}
   passSound: {fileID: 8300000, guid: 270488178a45b0b45b19c8e75cf82c09, type: 3}
   failSound: {fileID: 8300000, guid: 407ae137052eb4343b5e06937add258f, type: 3}
+  onPass:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 903754253}
+        m_TargetAssemblyTypeName: gunSpawnLogic, Assembly-CSharp
+        m_MethodName: onPuzzleSolved
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!64 &527384671
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2916,6 +2931,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886347959}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &903754251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 903754252}
+  - component: {fileID: 903754253}
+  m_Layer: 0
+  m_Name: gunSpawnLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &903754252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903754251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.015, y: 0.708, z: -2.6493}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &903754253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903754251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c453a70e07e6bc4f9ecf5f9d2010b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 0}
 --- !u!1 &915678519
 GameObject:
   m_ObjectHideFlags: 0
@@ -7396,6 +7456,21 @@ MonoBehaviour:
   source: {fileID: 1737989152}
   passSound: {fileID: 8300000, guid: 270488178a45b0b45b19c8e75cf82c09, type: 3}
   failSound: {fileID: 8300000, guid: 407ae137052eb4343b5e06937add258f, type: 3}
+  onPass:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 903754253}
+        m_TargetAssemblyTypeName: gunSpawnLogic, Assembly-CSharp
+        m_MethodName: onPuzzleSolved
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &1737989152
 AudioSource:
   m_ObjectHideFlags: 0

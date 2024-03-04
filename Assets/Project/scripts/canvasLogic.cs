@@ -21,6 +21,8 @@ public class canvasLogic : MonoBehaviour
     public AudioClip passSound;
 
     public AudioClip failSound;
+
+    public UnityEvent onPass;
     public void spawnMarker()
     {
         Instantiate(marker, markerSpawnPoint.position, Quaternion.identity);
@@ -101,6 +103,7 @@ public class canvasLogic : MonoBehaviour
     public void Pass()
     {
         source.PlayOneShot(passSound,0.5f);
+        onPass.Invoke();
     }
 
     public void Fail()
