@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Unity.Barracuda;
+using UnityEngine.Events;
 
 public class canvasLogic : MonoBehaviour
 {
@@ -12,6 +13,14 @@ public class canvasLogic : MonoBehaviour
     public NNModel _model;
 
     public RenderTexture renderTexture;
+
+    public int targetNumber;
+
+    public AudioSource source;
+
+    public AudioClip passSound;
+
+    public AudioClip failSound;
     public void spawnMarker()
     {
         Instantiate(marker, markerSpawnPoint.position, Quaternion.identity);
@@ -79,6 +88,23 @@ public class canvasLogic : MonoBehaviour
             .Aggregate((a, b) => (a.Score > b.Score) ? a : b) // Aggregate to find the maximum score
             .Index;
 
-        Debug.Log(maxScoreIndex);
+        if (maxScoreIndex == targetNumber)
+        {
+            Pass();
+        }
+        else
+        {
+            Fail();
+        }
+    }
+
+    public void Pass()
+    {
+        source.PlayOneShot(passSound,0.5f);
+    }
+
+    public void Fail()
+    {
+        source.PlayOneShot(failSound,0.5f);
     }
 }
