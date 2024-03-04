@@ -34,6 +34,7 @@ public class SpawnEnemy : MonoBehaviour
             GameObject player = GameObject.FindGameObjectWithTag("Player");
 
             int numEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            float minDistance = 5f;
             Debug.Log(1);
 
 
@@ -42,7 +43,7 @@ public class SpawnEnemy : MonoBehaviour
             {
                 // Generate a random position within the spawn radius
                 
-                Vector3 randomPosition = player.transform.position+ (Random.insideUnitSphere * spawnRadius);
+                Vector3 randomPosition = player.transform.position+ (Random.insideUnitSphere * spawnRadius)+(Random.insideUnitSphere * minDistance);
 
                 // Set the y-coordinate of the random position to 0 to ensure the enemy is spawned on the ground
                 randomPosition.y = 0;
