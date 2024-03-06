@@ -6,6 +6,9 @@ public class playerLogic : MonoBehaviour
     public int health = 100;
     private bool canTakeDamage = true;
 
+    public AudioSource source;
+    public AudioClip hitsound;
+
     void Start()
     {
 
@@ -18,6 +21,7 @@ public class playerLogic : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        source.PlayOneShot(hitsound);
         health -= damageAmount;
         Debug.Log("Player took " + damageAmount + " damage. Current health: " + health);
 
